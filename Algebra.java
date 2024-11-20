@@ -32,6 +32,8 @@ public class Algebra {
 		System.out.println(sqrt(1)); //1
 		System.out.println(sqrt(0)); //0
 		System.out.println(sqrt(10000)); //100
+		System.out.println(sqrt(76123)); //275
+		
 	}  
 
 	// Returns x1 + x2
@@ -90,7 +92,7 @@ public class Algebra {
 			Ans=plus(Ans, x1);
 		}
 
-		if ((x2<0 && x1>0) ||  (x2>0 && x1<0))
+		if ((x2<0 && x1>0))
 		{
 			Ans = minus(0, Ans);
 		}
@@ -130,7 +132,7 @@ public class Algebra {
 		{
 			Nat2 = minus(0, x2) ;
 		}
-		while (minus(Nat1, Ans)>=x2)
+		while (minus(Nat1, Ans)>=Nat2)
 		{
 			Ans=plus(Ans, Nat2);
 			count++;
@@ -155,12 +157,12 @@ public class Algebra {
 	public static int sqrt(int x) {
 
 		int num = 0;
-		while (pow(num, 2)<x)
+		while (pow(num, 2)<=x)
 		{
 			num++;
 		}
 
 		
-		return num;
+		return num-1;
 	}	  	  
 }
