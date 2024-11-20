@@ -21,24 +21,50 @@ public class Algebra {
    		System.out.println(sqrt(36));
 		System.out.println(sqrt(263169));
    		System.out.println(sqrt(76123));
+
+		System.out.println("Let's chek negative");
+		System.out.println(plus(2,-3));   // -1
+	    System.out.println(minus(-7,-2));  // -5
+   		System.out.println(minus(2,-7));  // 9
+ 		System.out.println(times(3,-4)); //-12
 	}  
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
 		
-		for (int i=0;i<x2; i++)
+		
+		if (x2>=0)
 		{
-			x1++;
+			for (int i=0;i<x2; i++)
+			{
+				x1++;
+			}
+		} else
+		{
+			for (int j=x2; j<0; j++)
+			{
+				x1--;
+			}
 		}
 		return x1;
+		
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 		
-		for (int i=0; i<x2; i++)
+		if (x2>=0)
 		{
-			x1--;
+			for (int i=0; i<x2; i++)
+			{
+				x1--;
+			}
+		} else
+		{
+			for (int j=x2; j<0; j++)
+			{
+				x1++;
+			}
 		}
 		return x1;
 
@@ -48,10 +74,22 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 		
 		int Ans = 0;
-		for (int i=0; i<x2; i++)
+		int natural = x2;
+		if (x2<0)
+		{
+			natural = minus(0, x2);
+		}
+		
+		for (int i=0; i<natural; i++)
 		{
 			Ans=plus(Ans, x1);
 		}
+
+		if ((x2<0 && x1>0) ||  (x2>0 && x1<0))
+		{
+			Ans = minus(0, Ans);
+		}
+		
 		return Ans;
 	}
 
@@ -83,7 +121,7 @@ public class Algebra {
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		
-		int Ans = x1 - (times(div(x1, x2), x2)) ;
+		int Ans = minus(x1, (times(div(x1, x2), x2))) ;
 		return Ans;
 	}	
 
