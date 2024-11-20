@@ -27,6 +27,11 @@ public class Algebra {
 	    System.out.println(minus(-7,-2));  // -5
    		System.out.println(minus(2,-7));  // 9
  		System.out.println(times(3,-4)); //-12
+
+		System.out.println("Let's chek sqrt");
+		System.out.println(sqrt(1)); //1
+		System.out.println(sqrt(0)); //0
+		System.out.println(sqrt(10000)); //100
 	}  
 
 	// Returns x1 + x2
@@ -97,7 +102,7 @@ public class Algebra {
 	public static int pow(int x, int n) {
 
 		int Ans = 1;
-		if (n<0) 
+		if (n<0 || x==0) 
 		{
 		Ans = 0;
 		} else
