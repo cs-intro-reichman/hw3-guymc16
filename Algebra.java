@@ -97,9 +97,15 @@ public class Algebra {
 	public static int pow(int x, int n) {
 
 		int Ans = 1;
+		if (n<0) 
+		{
+		Ans = 0;
+		} else
+		{
 		for (int i=0; i<n; i++)
 		{
 			Ans =times(Ans, x);
+		}
 		}
 		return Ans;
 	}
@@ -109,11 +115,26 @@ public class Algebra {
 		
 		int count = 0;
 		int Ans = 0;
-		while (minus(x1, Ans)>=x2)
+		int Nat1 = x1;
+		int Nat2 = x2;
+		if (x1<0)
 		{
-			Ans=plus(Ans, x2);
+			Nat1 = minus(0, x1) ;
+		}
+		if (x2<0)
+		{
+			Nat2 = minus(0, x2) ;
+		}
+		while (minus(Nat1, Ans)>=x2)
+		{
+			Ans=plus(Ans, Nat2);
 			count++;
 
+		}
+
+		if ((x1<0 && x2>0) || (x1>0 && x2<0))
+		{
+			count = minus(0, count);
 		}
 		return count;
 	}
