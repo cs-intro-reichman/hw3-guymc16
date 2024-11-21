@@ -86,19 +86,21 @@ public class Anagram {
 		for (int i=0; i<Up.length(); i++)
 		{
 			
-			if (Up.charAt(i) != ' ')
-			{
-				if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
-			{
-				Newstring = Newstring + (char)(Up.charAt(i)+32);
-			} else
+			if (Up.charAt(i) >= 'a' && Up.charAt(i) <= 'z')
 			{
 				Newstring = Newstring + Up.charAt(i);
+			} else if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
+			{
+				
+				Newstring = Newstring + (char)(Up.charAt(i)+32);
+			} 
+			
 			}
-			}
+			
+			return Newstring;
 		}
-		return Newstring;
-	} 
+		
+	
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
