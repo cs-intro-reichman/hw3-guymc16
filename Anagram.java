@@ -6,6 +6,8 @@ public class Anagram {
 		System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
 		System.out.println(isAnagram("Madam Curie","Radium came")); // true
 		System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemort")); // true
+		System.out.println(isAnagram("hello", "world!"));
+		System.out.println(isAnagram("abc", "def"));
 
 		// Tests the preProcess function.
 		System.out.println(preProcess("What? No way!!!"));
@@ -34,47 +36,42 @@ public class Anagram {
 		boolean Ans = true;
 		int count1 = 0;
 		int count2 = 0;
-		int num1 = 0;
-		if (New1.length() != New2.length())
-		{
-			return false;
-		} else
+	
+		if (New1.length() == New2.length())
 		{
 			for (int i=0; i<New1.length(); i++)
 			{
-				for (int j=i; j<New1.length(); j++)
+				
+				for (int j=0;j<New1.length(); j++)
 				{
-					 if (New1.indexOf(i,j) != -1)
-					 {
+					if (New1.charAt(j)==New1.charAt(i))
+					{
 						count1++;
-						j = New1.indexOf(i,j);
-					 } else break;
-				}
-				for (int k=i; k<New2.length(); k++)
-				{
-					 if (New2.indexOf(i,k) != -1)
-					 {
-						count2++;
-						k = New2.indexOf(i,k);
-					 } else break;
+					}
 				}
 
-				if (count1 != count2)
+				for (int k=0;k<New1.length(); k++)
+				{
+					if (New2.charAt(k)==New1.charAt(i))
+					{
+						count2++;
+					}
+				}
+
+				if (count1!=count2)
 				{
 					Ans = false;
-					break;
+					return false;
 				} else
 				{
 					count1 = 0;
 					count2 = 0;
 				}
-
 			}
-		} 
-
-
-		return Ans;
-	}
+		
+	} 
+	return Ans;
+}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
@@ -86,7 +83,7 @@ public class Anagram {
 		for (int i=0; i<Up.length(); i++)
 		{
 			
-			if (Up.charAt(i) >= 'a' && Up.charAt(i) <= 'z')
+			if ((Up.charAt(i) >= 'a' && Up.charAt(i) <= 'z') || Up.charAt(i) == ' ')
 			{
 				Newstring = Newstring + Up.charAt(i);
 			} else if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
@@ -95,8 +92,10 @@ public class Anagram {
 				Newstring = Newstring + (char)(Up.charAt(i)+32);
 			} 
 			
-			}
 			
+			
+			}
+
 			return Newstring;
 		}
 		
