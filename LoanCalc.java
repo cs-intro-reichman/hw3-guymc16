@@ -15,7 +15,7 @@ public class LoanCalc {
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		//chack endbalance
-		//System.out.println("Check endbalance: " + endBalance(loan, rate, n, 12334));
+		System.out.println("Check endbalance: " + endBalance(loan, rate, n, 10000));
 
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
@@ -34,7 +34,7 @@ public class LoanCalc {
 		
 		for (int i=0; i<n; i++) {
 			
-			loan = (loan-payment)*(1+rate/100.0);
+			loan = (loan-payment)*(1.0+(rate/100.0));
 		}
 		return loan;
 	}
@@ -48,9 +48,9 @@ public class LoanCalc {
 		
 		iterationCounter = 0;
 		double g = loan/n;
-		while (Math.abs(endBalance(loan, rate, n, g))>=epsilon)
+		while (Math.abs(endBalance(loan, rate, n, g))>epsilon)
 		{
-			g=g+epsilon;
+			g=g+epsilon/10;
 			iterationCounter++;
 		}
 		return g;
